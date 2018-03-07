@@ -1,0 +1,12 @@
+.DS_Store
+vendor/
+local/
+
+# Common backup files
+*.swp
+*.bak
+*.tmp
+*~
+golang-kubernetes-api
+clientgo/clientgo
+clientgo
