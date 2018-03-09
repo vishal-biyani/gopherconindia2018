@@ -25,7 +25,7 @@ func funcTwo(c *cli.Context) {
 
 	fmt.Println("Pods from Lister")
 	for j, pod := range pods.Items {
-		fmt.Printf("%d) %v", j, pod.Name)
+		fmt.Printf("%d) %v \n", j, pod.Name)
 	}
 
 }

@@ -16,7 +16,7 @@ func funcThree(c *cli.Context) {
 	cs := getKubeHandle()
 	listWatch := cache.NewListWatchFromClient(cs.Core().RESTClient(), "pods", "", fields.Everything())
 
-	_, controller := cache.NewInformer(listWatch, &v1.Pod{}, time.Second*10, cache.ResourceEventHandlerFuncs{
+	_, controller := cache.NewInformer(listWatch, &v1.Pod{}, time.Second*5, cache.ResourceEventHandlerFuncs{
 		AddFunc: func(obj interface{}) {
 			pod := obj.(*v1.Pod)
 			fmt.Println("Pod Added:", pod.Name)
