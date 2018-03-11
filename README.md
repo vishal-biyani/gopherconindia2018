@@ -8,6 +8,7 @@ https://www.slideshare.net/vrbiyani/gophercon-2018-kubernetes-api-golang
 To build:
 
 ```
+glide up -v
 ./build.sh
 ```
 
