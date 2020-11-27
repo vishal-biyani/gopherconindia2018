@@ -5,16 +5,16 @@ import (
 
 	"github.com/urfave/cli"
 
+	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/fields"
-	"k8s.io/client-go/pkg/api/v1"
 	"k8s.io/client-go/tools/cache"
 )
 
 func funcTwo(c *cli.Context) {
 	fmt.Println("Running Example Two")
 	cs := getKubeHandle()
-	listWatch := cache.NewListWatchFromClient(cs.Core().RESTClient(), "pods", "", fields.Everything())
+	listWatch := cache.NewListWatchFromClient(cs.CoreV1().RESTClient(), "pods", "", fields.Everything())
 
 	ro, err := listWatch.List(metav1.ListOptions{})
 	if err != nil {
