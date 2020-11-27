@@ -6,10 +6,10 @@ import (
 
 	"github.com/golang/glog"
 	"github.com/urfave/cli"
+	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/apimachinery/pkg/util/wait"
-	"k8s.io/client-go/pkg/api/v1"
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/client-go/util/workqueue"
 )
@@ -25,7 +25,7 @@ func funcFour(c *cli.Context) {
 	cs := getKubeHandle()
 
 	queue := workqueue.NewRateLimitingQueue(workqueue.DefaultControllerRateLimiter())
-	listWatch := cache.NewListWatchFromClient(cs.Core().RESTClient(), "pods", "", fields.Everything())
+	listWatch := cache.NewListWatchFromClient(cs.CoreV1().RESTClient(), "pods", "", fields.Everything())
 
 	indexer, informer := cache.NewIndexerInformer(listWatch, &v1.Pod{}, time.Second*5, cache.ResourceEventHandlerFuncs{
 		AddFunc: func(obj interface{}) {

@@ -1,6 +1,0 @@
-package: github.com/vishal-biyani/golang-kubernetes-api
-import:
-- package: k8s.io/client-go
-  version: v4.0.0
-  subpackages:
-  - plugin/pkg/client/auth/gcp
